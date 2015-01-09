@@ -5,10 +5,11 @@ data=read.table(file="household_power_consumption.txt", header=T, sep=";")
 
 data$DateTime = as.POSIXct(paste(data$Date,data$Time), format="%d/%m/%Y %H:%M:%S")
 
+box = subset(data,Date== "1/2/2007" | Date=="2/2/2007")
+
 plot(box$DateTime, as.double(as.character(box$Global_active_power)),type="n", ylab="Global Active Power",xlab="")
 lines(box$DateTime, as.double(as.character(box$Global_active_power)))
 
-box = subset(data,Date== "1/2/2007" | Date=="2/2/2007")
 plot(box$DateTime, as.double(as.character(box$Sub_metering_1)),type="n", ylab="Energy sub metering",xlab="")
 lines(box$DateTime, as.double(as.character(box$Sub_metering_1)),col="black")
 lines(box$DateTime, as.double(as.character(box$Sub_metering_2)),col="red")
